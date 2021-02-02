@@ -4,10 +4,10 @@ objs = $(subst .c,.o,$(wildcard *.c))
 deps = ExtractPO.h
 
 $(prog): $(objs)
-	$(cc) $(objs) -o $(prog) 
+	$(cc) $(objs) -o $(prog)
 
 %.o: %.c $(deps)
-	$(cc) -c $< -o $@ 
+	$(cc) -c $< -o $@
 
 clean:
 	rm -rf *.o $(prog)
