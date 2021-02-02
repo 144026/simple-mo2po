@@ -6,5 +6,6 @@
 //int ExtractPoText(FILE * fpMo, FILE * fpPO1);
 
 int ShowMoHeader(FILE * fpMo);
+int ShowMoStrInfo(FILE * fpMo, unsigned int StrIndex);
 
 #endif

@@ -13,5 +13,6 @@ int main(int argc, char * argv[]){
     FILE * fpr = fopen(infile,"rb+");
 
     ShowMoHeader(fpr);
+    ShowMoStrInfo(fpr, 0);
     return 0;
 }
