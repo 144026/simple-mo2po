@@ -3,7 +3,7 @@
 #include<stdlib.h>
 #include<string.h>
 
-#define STR_MO_ENTRY_SIZE 8
+#define MO_STR_ENTRY_SIZE 8
 
 typedef struct _mo_header{
     unsigned int Magic;
@@ -40,11 +40,11 @@ int GetStrInfo(FILE * fpMo, p_str_info_t pStrInfo, unsigned int StrIndex){
     mo_header_t MoHeader;
     GetMoHeader(fpMo, &MoHeader);
 
-    fseek(fpMo, MoHeader.OffsetTableOfOrigin+StrIndex*STR_MO_ENTRY_SIZE, SEEK_SET);
+    fseek(fpMo, MoHeader.OffsetTableOfOrigin+StrIndex*MO_STR_ENTRY_SIZE, SEEK_SET);
     fread(&pStrInfo->LenOfOrigin, sizeof(char), 4, fpMo);
     fread(&pStrInfo->OffsetOfOrigin, sizeof(char), 4, fpMo);
 
-    fseek(fpMo, MoHeader.OffsetTableOfTrans+StrIndex*STR_MO_ENTRY_SIZE, SEEK_SET);
+    fseek(fpMo, MoHeader.OffsetTableOfTrans+StrIndex*MO_STR_ENTRY_SIZE, SEEK_SET);
     fread(&pStrInfo->LenOfTrans, sizeof(char), 4, fpMo);
     fread(&pStrInfo->OffsetOfTrans, sizeof(char), 4, fpMo);
 }
