@@ -8,13 +8,13 @@
 int main(int argc, char * argv[]){
 
     char infile[LEN] = "../trans/main.zh.mo";
-    char outfile[LEN] = "../trans/out.mo";
+    char outfile[LEN] = "../trans/out.po";
 
     FILE * fpr = fopen(infile,"rb+");
     FILE * fpw = fopen(outfile,"wb+");
 
     ShowMoHeader(fpr);
-    ShowMoAllStr(fpr, fpw);
+    Mo2Po(fpr, fpw);
 
     return 0;
 }
