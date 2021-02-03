@@ -4,6 +4,7 @@
 #include<string.h>
 
 #define MO_STR_ENTRY_SIZE 8
+#define MO_STR_NUL_SIZE 8
 
 typedef struct _mo_header{
     unsigned int Magic;
@@ -67,4 +68,22 @@ int ShowMoStrInfo(FILE * fpMo, unsigned int StrIndex){
     printf("info of string # %u\n", StrIndex);
     printf("orig_len: %u \t orig_off: 0x%x\n", StrInfo.LenOfOrigin, StrInfo.OffsetOfOrigin);
     printf("trans_len: %u \t trans_off: 0x%x\n", StrInfo.LenOfTrans, StrInfo.OffsetOfTrans);
+}
+
+int ShowMoStrContent(FILE * fpMo, unsigned int StrIndex){
+    str_info_t StrInfo;
+    GetStrInfo(fpMo, &StrInfo, StrIndex);
+
+    char * pOrigin = (char*)malloc(MO_STR_NUL_SIZE+StrInfo.LenOfOrigin*sizeof(char));
+    fseek(fpMo, StrInfo.OffsetOfOrigin, SEEK_SET);
+    fread(pOrigin, sizeof(char), MO_STR_NUL_SIZE+StrInfo.LenOfOrigin, fpMo);
+    fprintf(stdout, "%s\n", pOrigin);
+
+    char * pTrans = (char*)malloc(MO_STR_NUL_SIZE+StrInfo.LenOfTrans*sizeof(char));
+    fseek(fpMo, StrInfo.OffsetOfTrans, SEEK_SET);
+    fread(pTrans, sizeof(char), MO_STR_NUL_SIZE+StrInfo.LenOfTrans, fpMo);
+    fprintf(stdout, "%s\n", pTrans);
+
+    free(pOrigin);
+    free(pTrans);
 }

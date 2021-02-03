@@ -7,5 +7,6 @@
 
 int ShowMoHeader(FILE * fpMo);
 int ShowMoStrInfo(FILE * fpMo, unsigned int StrIndex);
+int ShowMoStrContent(FILE * fpMo, unsigned int StrIndex);
 
 #endif

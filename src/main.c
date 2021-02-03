@@ -13,6 +13,14 @@ int main(int argc, char * argv[]){
     FILE * fpr = fopen(infile,"rb+");
 
     ShowMoHeader(fpr);
+
+    putchar('\n');
     ShowMoStrInfo(fpr, 0);
+    ShowMoStrContent(fpr, 0);
+
+    putchar('\n');
+    ShowMoStrInfo(fpr, 1);
+    ShowMoStrContent(fpr, 1);
+
     return 0;
 }
