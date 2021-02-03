@@ -70,20 +70,29 @@ int ShowMoStrInfo(FILE * fpMo, unsigned int StrIndex){
     printf("trans_len: %u \t trans_off: 0x%x\n", StrInfo.LenOfTrans, StrInfo.OffsetOfTrans);
 }
 
-int ShowMoStrContent(FILE * fpMo, unsigned int StrIndex){
+int ShowMoStrContent(FILE * fpMo, unsigned int StrIndex, FILE * fpDst){
     str_info_t StrInfo;
     GetStrInfo(fpMo, &StrInfo, StrIndex);
 
     char * pOrigin = (char*)malloc(MO_STR_NUL_SIZE+StrInfo.LenOfOrigin*sizeof(char));
     fseek(fpMo, StrInfo.OffsetOfOrigin, SEEK_SET);
     fread(pOrigin, sizeof(char), MO_STR_NUL_SIZE+StrInfo.LenOfOrigin, fpMo);
-    fprintf(stdout, "%s\n", pOrigin);
+    fprintf(fpDst, "%s\n", pOrigin);
 
     char * pTrans = (char*)malloc(MO_STR_NUL_SIZE+StrInfo.LenOfTrans*sizeof(char));
     fseek(fpMo, StrInfo.OffsetOfTrans, SEEK_SET);
     fread(pTrans, sizeof(char), MO_STR_NUL_SIZE+StrInfo.LenOfTrans, fpMo);
-    fprintf(stdout, "%s\n", pTrans);
+    fprintf(fpDst, "%s\n", pTrans);
 
     free(pOrigin);
     free(pTrans);
+}
+
+int ShowMoAllStr(FILE * fpMo, FILE * fpDst){
+    mo_header_t MoHeader;
+    GetMoHeader(fpMo, &MoHeader);
+
+    for(int i=0; i<MoHeader.StringNumber; ++i){
+        ShowMoStrContent(fpMo, i, fpDst);
+    }
 }

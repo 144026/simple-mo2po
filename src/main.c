@@ -8,19 +8,13 @@
 int main(int argc, char * argv[]){
 
     char infile[LEN] = "../trans/main.zh.mo";
-    char outfile[LEN] = "../trans";
+    char outfile[LEN] = "../trans/out.mo";
 
     FILE * fpr = fopen(infile,"rb+");
+    FILE * fpw = fopen(outfile,"wb+");
 
     ShowMoHeader(fpr);
-
-    putchar('\n');
-    ShowMoStrInfo(fpr, 0);
-    ShowMoStrContent(fpr, 0);
-
-    putchar('\n');
-    ShowMoStrInfo(fpr, 1);
-    ShowMoStrContent(fpr, 1);
+    ShowMoAllStr(fpr, fpw);
 
     return 0;
 }
