@@ -131,7 +131,7 @@ int Mo2Po(FILE * fpMo, FILE * fpDst){
         //change translated string to PO-file format, write to ouput file
         pTemp = (char*)malloc(MO_STR_EXT_SIZE+MO_STR_NUL_SIZE+StrInfo.LenOfTrans*sizeof(char));
         MoStr2PoStr(pTrans, pTemp);
-        fprintf(fpDst, "msgstr \"%s钥匙\"\n\n", pTemp);
+        fprintf(fpDst, "msgstr \"%s\"\n\n", pTemp);
         free(pTrans);
         free(pTemp);
     }
