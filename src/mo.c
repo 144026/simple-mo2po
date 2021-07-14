@@ -1,4 +1,4 @@
-#include"ExtractPO.h"
+#include"mo.h"
 #include<stdlib.h>
 
 // read MO file header info

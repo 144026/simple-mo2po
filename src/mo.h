@@ -1,5 +1,5 @@
-#ifndef __EXTARCT_PO
-#define __EXTARCT_PO
+#ifndef MO_
+#define MO_
 
 #include<stdio.h>
 
@@ -29,4 +29,4 @@ int ShowMoStrContent(FILE * fpMo, unsigned int StrIndex, FILE * fpDst);
 int ShowMoAllStr(FILE * fpMo, FILE * fpDst);
 int Mo2Po(FILE * fpMo, FILE * fpDst);
 
-#endif
+#endif // MO_

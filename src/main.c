@@ -1,7 +1,8 @@
-#include"ExtractPO.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+
+#include"mo.h"
 
 #define LEN 256
 
