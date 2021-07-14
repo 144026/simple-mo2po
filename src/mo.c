@@ -14,6 +14,8 @@ int GetMoHeader(FILE * fpMo, p_mo_header_t pMoHeader){
 
     fread(&pMoHeader->SizeOfHash,sizeof(char),4,fpMo);
     fread(&pMoHeader->OffsetOfHash,sizeof(char),4,fpMo);
+
+    return 0;
 }
 
 // read len & offset of a string by its index
@@ -28,6 +30,8 @@ int GetStrInfo(FILE * fpMo, p_str_info_t pStrInfo, unsigned int StrIndex){
     fseek(fpMo, MoHeader.OffsetTableOfTrans+StrIndex*MO_STR_ENTRY_SIZE, SEEK_SET);
     fread(&pStrInfo->LenOfTrans, sizeof(char), 4, fpMo);
     fread(&pStrInfo->OffsetOfTrans, sizeof(char), 4, fpMo);
+
+    return 0;
 }
 
 // print MO file header info to stdout
@@ -40,6 +44,8 @@ int ShowMoHeader(FILE * fpMo){
         MoHeader.OffsetTableOfOrigin,MoHeader.OffsetTableOfTrans);
     printf("size_of_hash: 0x%x \toff_of_hash: 0x%x\n",
         MoHeader.SizeOfHash,MoHeader.OffsetOfHash);
+
+    return 0;
 }
 
 // print len & offset of a string to stdout, by its index
@@ -50,6 +56,8 @@ int ShowMoStrInfo(FILE * fpMo, unsigned int StrIndex){
     printf("info of string # %u\n", StrIndex);
     printf("orig_len: %u \t orig_off: 0x%x\n", StrInfo.LenOfOrigin, StrInfo.OffsetOfOrigin);
     printf("trans_len: %u \t trans_off: 0x%x\n", StrInfo.LenOfTrans, StrInfo.OffsetOfTrans);
+
+    return 0;
 }
 
 // write the content of a string(orig & trans) to a FILE
@@ -69,6 +77,8 @@ int ShowMoStrContent(FILE * fpMo, unsigned int StrIndex, FILE * fpDst){
 
     free(pOrigin);
     free(pTrans);
+
+    return 0;
 }
 
 // write the content of ALL strings(orig & trans) to a FILE
@@ -79,6 +89,8 @@ int ShowMoAllStr(FILE * fpMo, FILE * fpDst){
     for(int i=0; i<MoHeader.StringNumber; ++i){
         ShowMoStrContent(fpMo, i, fpDst);
     }
+
+    return 0;
 }
 
 // change a string read from MO file, into the format of PO file
@@ -100,6 +112,8 @@ int MoStr2PoStr(char * MoStr, char * PoStr){
         }
     }
     PoStr[PoIndex]='\0';
+
+    return 0;
 }
 
 // read MO file, output a PO file
@@ -135,4 +149,6 @@ int Mo2Po(FILE * fpMo, FILE * fpDst){
         free(pTrans);
         free(pTemp);
     }
+
+    return 0;
 }
