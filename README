@@ -4,3 +4,46 @@
 
 This project is a Work In Progress, changes will be pushed daily. There might
 be potential damage caused by code base change.
+
+## Configure
+
+There is currently nothing to config.
+
+## Build
+
+**Choose your favorite build system !**
+
+### Make
+
+```bash
+# make clean
+make
+```
+
+### Autotools
+
+Currently work in progress.
+
+### Cmake
+
+```bash
+mkdir -p build
+cd build && cmake ..
+make
+```
+
+### Meson
+
+```bash
+meson build
+cd build && meson compile
+```
+
+## Test
+
+Currently only a basic test done by meson.
+
+```bash
+cd build && meson test
+```
+
