@@ -1,5 +1,5 @@
 project('simple-mo2po', 'c',
-  version : '0.2.0',
+  version : '0.3.0',
   default_options : ['warning_level=3'])
 
 subdir('src')
@@ -10,3 +10,4 @@ exe = executable('mo2po',
   install : true)
 
 test('basic', exe, args: [mo_file, 'out.po'])
+
