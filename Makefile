@@ -28,3 +28,4 @@ $(objs): $(build_dir)/%.o: $(src_dir)/%.c $(deps)
 
 clean:
 	rm -rf $(build_dir)
+
