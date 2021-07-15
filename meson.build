@@ -3,11 +3,11 @@ project('simple-mo2po', 'c',
   default_options : ['warning_level=3'])
 
 subdir('src')
-subdir('trans')
 
 exe = executable('mo2po',
   srcs,
   install : true)
 
-test('basic', exe, args: [mo_file, 'out.po'])
+# run tests
+subdir('tests')
 
