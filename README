@@ -46,4 +46,3 @@ Currently only a basic test done by meson.
 ```bash
 cd build && meson test
 ```
-
