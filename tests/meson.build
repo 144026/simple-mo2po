@@ -1,0 +1,5 @@
+mo_file = files('main.zh.mo')
+po_file = files('main.zh.po')
+sh = find_program('bash')
+script = files('test.sh')
+test('test1', sh, args: [script, exe, mo_file, po_file])
