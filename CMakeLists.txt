@@ -16,4 +16,3 @@ add_test(
 	NAME test1
 	COMMAND ${test_dir}/test.sh ${CMAKE_BINARY_DIR}/mo2po ${test_dir}/main.zh.mo ${test_dir}/main.zh.po
 )
-set_tests_properties(test1 PROPERTIES DEPENDS mo2po)
