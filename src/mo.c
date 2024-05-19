@@ -83,10 +83,11 @@ int ShowMoStrContent(FILE * fpMo, unsigned int StrIndex, FILE * fpDst){
 
 // write the content of ALL strings(orig & trans) to a FILE
 int ShowMoAllStr(FILE * fpMo, FILE * fpDst){
+    unsigned i;
     mo_header_t MoHeader;
     GetMoHeader(fpMo, &MoHeader);
 
-    for(int i=0; i<MoHeader.StringNumber; ++i){
+    for (i = 0; i < MoHeader.StringNumber; ++i) {
         ShowMoStrContent(fpMo, i, fpDst);
     }
 
@@ -118,10 +119,11 @@ int MoStr2PoStr(char * MoStr, char * PoStr){
 
 // read MO file, output a PO file
 int Mo2Po(FILE * fpMo, FILE * fpDst){
+    unsigned i;
     mo_header_t MoHeader;
     GetMoHeader(fpMo, &MoHeader);
 
-    for(int i=0; i<MoHeader.StringNumber; ++i){
+    for (i = 0; i < MoHeader.StringNumber; ++i) {
         str_info_t StrInfo;
         GetStrInfo(fpMo, &StrInfo, i);
 

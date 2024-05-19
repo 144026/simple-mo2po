@@ -1,23 +1,11 @@
 # simple-mo2po
 
-## NOTE
-
-This project is a Work In Progress, changes will be pushed daily. There might
-be potential damage caused by code base change.
-
-## Configure
-
-There is currently nothing to config.
-
-## Build
-
-**Choose your favorite build system !**
+## Build & Test
 
 ### Make
 
 ```bash
-# make clean
-make
+make && make test
 ```
 
 ### Autotools
@@ -29,20 +17,13 @@ Currently work in progress.
 ```bash
 mkdir -p build
 cd build && cmake ..
-make
+make && make test
 ```
 
 ### Meson
 
 ```bash
 meson build
-cd build && meson compile
-```
-
-## Test
-
-Currently only a basic test done by meson.
-
-```bash
-cd build && meson test
+cd build
+meson compile && meson test
 ```
