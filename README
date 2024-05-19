@@ -1,5 +1,7 @@
 # simple-mo2po
 
+A simple alternative to `msgunfmt` of GNU gettext for MO file with unsorted msg arrays.
+
 ## Build & Test
 
 ### Make
